@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+A dynamic form generator that takes a JSON schema and generates a styled, functional form in real-time. The application allows users to input a JSON schema, which is then used to generate a form. The form updates dynamically as the JSON schema is edited, and the application includes error handling, form validation, and dark mode support.
+Installation
+To run this project locally, follow these steps:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Clone the Repository
+bash
+Copy code
+git clone https://github.com/yourusername/dynamic-form-generator.git
+cd dynamic-form-generator
+2. Install Dependencies
+bash
+Copy code
+npm install
+3. Start the Development Server
+bash
+Copy code
+npm start
+The app will be running on http://localhost:3000.
+How to Use
+On the left side, you will find a JSON editor.
+Paste a valid JSON schema in the editor (see example below).
+As you edit the JSON, the form preview on the right side will update in real-time.
+The form includes validation, and once you fill out the fields and submit, the data will be logged to the console.
+Example JSON Schema
+Here is an example of a valid JSON schema you can use to test the form:
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+json
+Copy code
+{
+  "formTitle": "Project Requirements Survey",
+  "formDescription": "Please fill out this survey about your project needs",
+  "fields": [
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Full Name",
+      "required": true,
+      "placeholder": "Enter your full name"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Email Address",
+      "required": true,
+      "placeholder": "you@example.com",
+      "validation": {
+        "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+        "message": "Please enter a valid email address"
+      }
+    },
+    {
+      "id": "companySize",
+      "type": "select",
+      "label": "Company Size",
+      "required": true,
+      "options": [
+        { "value": "1-50", "label": "1-50 employees" },
+        { "value": "51-200", "label": "51-200 employees" },
+        { "value": "201-1000", "label": "201-1000 employees" },
+        { "value": "1000+", "label": "1000+ employees" }
+      ]
+    }
+  ]
+}
